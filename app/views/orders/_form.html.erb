@@ -15,6 +15,11 @@
     <%= form.collection_select :customer_id,  Customer.all, :id, :name%>
   </div>
   <div class="actions">
+    <%= form.label :category %>
+    <%= form.collection_select :category_id , Category.all, :id, :category_type%>
+  </div>
+
+  <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>

@@ -64,6 +64,10 @@ GEM
     concurrent-ruby (1.1.10)
     crass (1.0.6)
     erubi (1.10.0)
+    factory_bot (6.2.1)
+      activesupport (>= 5.0.0)
+    faker (2.21.0)
+      i18n (>= 1.8.11, < 2)
     ffi (1.15.5)
     globalid (1.0.0)
       activesupport (>= 5.0)
@@ -178,6 +182,8 @@ PLATFORMS
 DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
+  factory_bot
+  faker
   jbuilder (~> 2.7)
   listen
   pg (>= 0.18, < 2.0)

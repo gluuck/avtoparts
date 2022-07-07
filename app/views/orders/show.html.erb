@@ -1,4 +1,13 @@
-<p id="notice"><%= notice %></p>
 
+<h3><%= @order.customer.name%></h3>
+<%= @order.category.category_type %></br>
+<h4>Работы: </h4> </br>
+<% @order.services.each do |service| %>
+  <%= service.service_type %>
+  <%= link_to 'Edit', edit_order_service_path(@order, service) %> |
+  <%= link_to 'Delete', '#', method: :delete %>
+</br>
+<% end %>
 <%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+<%= link_to 'Back', orders_path %></br>
+<%= link_to 'Добавть работы', new_order_service_path(@order) %>

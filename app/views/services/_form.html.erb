@@ -1,0 +1,9 @@
+<%= form_with(model: [:order, @service.id.present? ? @service : Service.new], local: true ) do |form| %>
+  <div>
+    <%= form.label :type %>
+    <%= form.text_field :service_type %>
+  </div>
+  <div>
+    <%= form.submit 'Добавить' %>
+  </div>
+<% end %>

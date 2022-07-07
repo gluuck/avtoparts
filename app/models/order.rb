@@ -1,6 +1,8 @@
 class Order < ApplicationRecord
   belongs_to :customer
-  has_many :services
+  has_many :services, dependent: :destroy
   has_one :executor
-  has_one :category
+  belongs_to :category
+
+  validates :category, presence: true
 end

@@ -10,17 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_05_125032) do
+ActiveRecord::Schema.define(version: 2022_07_05_124959) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
-    t.bigint "order_id", null: false
-    t.string "title", null: false
+    t.string "category_type", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["order_id"], name: "index_categories_on_order_id"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -39,21 +37,23 @@ ActiveRecord::Schema.define(version: 2022_07_05_125032) do
 
   create_table "orders", force: :cascade do |t|
     t.bigint "customer_id", null: false
+    t.bigint "category_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_orders_on_category_id"
     t.index ["customer_id"], name: "index_orders_on_customer_id"
   end
 
   create_table "services", force: :cascade do |t|
     t.bigint "order_id", null: false
-    t.string "type", null: false
+    t.string "service_type", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["order_id"], name: "index_services_on_order_id"
   end
 
-  add_foreign_key "categories", "orders"
   add_foreign_key "executors", "orders"
+  add_foreign_key "orders", "categories"
   add_foreign_key "orders", "customers"
   add_foreign_key "services", "orders"
 end
