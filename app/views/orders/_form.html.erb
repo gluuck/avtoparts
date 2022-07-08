@@ -11,15 +11,15 @@
     </div>
   <% end %>
   <div class="actions">
-    <%= form.label :customer%>
+    <%= form.label :заказчик%>
     <%= form.collection_select :customer_id,  Customer.all, :id, :name%>
   </div>
   <div class="actions">
-    <%= form.label :category %>
+    <%= form.label :категория %>
     <%= form.collection_select :category_id , Category.all, :id, :category_type%>
   </div>
   <div class="actions">
-    <%= form.label :category %>
+    <%= form.label :работник %>
     <%= form.collection_select :executor_id , Executor.all, :id, :name%>
   </div>
   <div class="actions">
