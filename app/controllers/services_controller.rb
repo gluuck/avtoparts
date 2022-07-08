@@ -30,7 +30,7 @@ class ServicesController < ApplicationController
   def update
     respond_to do |format|
       if @service.update(service_params)
-        format.html { redirect_to @service.order, notice: "servise was successfully updated." }
+        format.html { redirect_to @service.order, notice: "Servise was successfully updated." }
         format.json { render :show, status: :ok, location: @service }
       else
         format.html { render :edit, status: :unprocessable_entity }

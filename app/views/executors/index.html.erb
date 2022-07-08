@@ -1,0 +1,9 @@
+<h4>  Работники: </h4>
+<% @executors.order(id: :asc).each do |e| %>
+  <div>
+    <%= link_to e.name, e %>
+    <%= link_to 'Редактировать', edit_executor_path(e) %> |
+    <%= link_to 'Удалить', e, method: :delete %>
+  </div>
+<% end %>
+<%= link_to 'Создать', new_executor_path%>

@@ -1,7 +1,6 @@
 class CreateExecutors < ActiveRecord::Migration[6.0]
   def change
     create_table :executors do |t|
-      t.references :order, null: false, foreign_key: true
       t.string :name, null: false
 
       t.timestamps

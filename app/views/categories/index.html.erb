@@ -1,0 +1,10 @@
+<% @categories.order(id: :asc).each do |c| %>
+  <div>
+    <%= link_to c.category_type, c %>
+    <%= link_to 'Редактировать', edit_category_path(c) %> |
+    <%= link_to 'Удалить', c, method: :delete %>
+  </div>
+<% end %>
+
+<%= link_to 'Создать категорию', new_category_path %> |
+<%= link_to 'К заказам', root_path %>

@@ -1,0 +1,9 @@
+<h4>  Клиенты: </h4>
+<% @customers.order(id: :asc).each do |c| %>
+  <div>
+    <%= link_to c.name, c %>
+    <%= link_to 'Редактировать', edit_customer_path(c) %> |
+    <%= link_to 'Удалить', c, method: :delete %>
+  </div>
+<% end %>
+<%= link_to 'Создать', new_customer_path%>

@@ -1,13 +1,18 @@
 
 <h3><%= @order.customer.name%></h3>
 <%= @order.category.category_type %></br>
-<h4>Работы: </h4> </br>
+<h4>Работы: </h4>
 <% @order.services.each do |service| %>
-  <%= service.service_type %>
-  <%= link_to 'Edit', edit_order_service_path(@order, service) %> |
-  <%= link_to 'Delete', '#', method: :delete %>
+  <div>
+    <li><%= service.service_type %>
+      <%= link_to 'Редактировать', edit_order_service_path(@order, service) %> |
+      <%= link_to 'Удалить', [@order, service], method: :delete %>
+    </li>
+
+  </div>
 </br>
+
 <% end %>
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %></br>
-<%= link_to 'Добавть работы', new_order_service_path(@order) %>
+<%= link_to 'Добавть работы', new_order_service_path(@order) %> |
+<%= link_to 'Редактировать', edit_order_path(@order) %> |
+<%= link_to 'К заказам', orders_path %>

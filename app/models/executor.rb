@@ -1,5 +1,5 @@
 class Executor < ApplicationRecord
-  belongs_to :order
+  has_many :order
 
   validates :name, presence: true
 end
