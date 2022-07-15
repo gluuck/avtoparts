@@ -1,0 +1,14 @@
+<h5>Customer: <%= order.customer.name%></h5>
+<p>
+  <b>Category:</b>
+    <%= order.category.category_type %> |
+  <b>Executor:</b>
+    <%= order.executor.name %>
+</p>
+<h4>Jobs: </h4>
+  <% order.services.each do |service| %>
+    <div>
+      <li><%= service.service_type %> </li>
+    </div>
+  <% end %>
+</br>

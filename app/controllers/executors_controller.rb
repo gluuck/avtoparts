@@ -51,7 +51,7 @@ class ExecutorsController < ApplicationController
   private
 
   def set_executor
-    @executor = Executor.find(params[:id])
+    @executor ||= Executor.find(params[:id])
   end
 
   def executor_params

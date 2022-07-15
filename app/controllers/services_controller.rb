@@ -5,12 +5,12 @@ class ServicesController < ApplicationController
   end
 
   def new
-    @order = Order.find(params[:order_id])
+    @order ||= Order.find(params[:order_id])
     @service = @order.services.build
   end
 
   def create
-    @order = Order.find(params[:order_id])
+    @order ||= Order.find(params[:order_id])
 
     @service = @order.services.build(service_params)
     respond_to do |format|
@@ -50,7 +50,7 @@ class ServicesController < ApplicationController
   private
 
   def set_service
-    @service = Service.find(params[:id])
+    @service ||= Service.find(params[:id])
   end
 
   def service_params

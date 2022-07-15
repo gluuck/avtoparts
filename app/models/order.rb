@@ -1,12 +1,11 @@
 class Order < ApplicationRecord
   belongs_to :customer
-  has_many :services, dependent: :destroy
   belongs_to :executor
   belongs_to :category
+  has_many :order_reports, dependent: :destroy
+  has_many :reports, through: :order_reports
+
+  has_many :services, dependent: :destroy
 
   validates :category, presence: true
-
-  scope :hard, ->(type) {
-    joins(:category)
-      .where(categories: { category_type: type })}
 end

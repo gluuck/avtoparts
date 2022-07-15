@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_05_124842) do
+ActiveRecord::Schema.define(version: 2022_07_14_052654) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,15 @@ ActiveRecord::Schema.define(version: 2022_07_05_124842) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "order_reports", force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.bigint "report_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_id"], name: "index_order_reports_on_order_id"
+    t.index ["report_id"], name: "index_order_reports_on_report_id"
+  end
+
   create_table "orders", force: :cascade do |t|
     t.bigint "customer_id", null: false
     t.bigint "category_id", null: false
@@ -44,6 +53,12 @@ ActiveRecord::Schema.define(version: 2022_07_05_124842) do
     t.index ["executor_id"], name: "index_orders_on_executor_id"
   end
 
+  create_table "reports", force: :cascade do |t|
+    t.string "title", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "services", force: :cascade do |t|
     t.bigint "order_id", null: false
     t.string "service_type", null: false
@@ -52,6 +67,8 @@ ActiveRecord::Schema.define(version: 2022_07_05_124842) do
     t.index ["order_id"], name: "index_services_on_order_id"
   end
 
+  add_foreign_key "order_reports", "orders"
+  add_foreign_key "order_reports", "reports"
   add_foreign_key "orders", "categories"
   add_foreign_key "orders", "customers"
   add_foreign_key "orders", "executors"

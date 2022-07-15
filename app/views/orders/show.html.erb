@@ -1,15 +1,20 @@
 
-<h3><%= @order.customer.name%></h3>
-<%= @order.category.category_type %></br>
+<h5>Заказчик: <%= @order.customer.name%></h5>
+<p>
+  <b>Категория:</b>
+    <%= @order.category.category_type %> |
+  <b>Работник:</b>
+    <%= @order.executor.name %>
+</p>
 <h4>Работы: </h4>
-<% @order.services.each do |service| %>
-  <div>
-    <li><%= service.service_type %>
-      <%= link_to 'Редактировать', edit_order_service_path(@order, service) %> |
-      <%= link_to 'Удалить', [@order, service], method: :delete %>
-    </li>
+  <% @order.services.each do |service| %>
+    <div>
+      <li><%= service.service_type %>
+        <%= link_to 'Редактировать', edit_order_service_path(@order, service) %> |
+        <%= link_to 'Удалить', [@order, service], method: :delete %>
+      </li>
 
-  </div>
+    </div>
 </br>
 
 <% end %>
