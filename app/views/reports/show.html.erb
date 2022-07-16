@@ -1,3 +1,4 @@
+<h3><%= @report.title %></h3>
 <% @report.orders.includes(:customer, :executor, :category, :services).each do |o|%>
   <%= render partial: 'show_orders', locals:{order: o} %></br>
 <% end %></br>

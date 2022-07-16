@@ -17,7 +17,6 @@ class ReportsController < ApplicationController
 
     @report =  Report.new(report_params)
     if @report.save
-    
       @report.orders.push(query)
       redirect_to @report
     else
